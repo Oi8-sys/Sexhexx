@@ -1,0 +1,154 @@
+pip install flask
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+# Define HTML templates directly in the Python file
+home_template = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teen Sexual Health</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Teen Sexual Health</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/resources">Resources</a>
+            <a href="/fun-facts">Fun Facts</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Understanding Your Body</h2>
+        <p>Here you can find reliable information about sexual health.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Teen Sexual Health</p>
+    </footer>
+</body>
+</html>
+"""
+
+about_template = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/resources">Resources</a>
+            <a href="/fun-facts">Fun Facts</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Our Mission</h2>
+        <p>We provide accurate information on sexual health for teens.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Teen Sexual Health</p>
+    </footer>
+</body>
+</html>
+"""
+
+resources_template = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+</head>
+<body>
+    <header>
+        <h1>Resources</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/resources">Resources</a>
+            <a href="/fun-facts">Fun Facts</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Helpful Links</h2>
+        <p>Find useful resources and links to further information on sexual health.</p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Teen Sexual Health</p>
+    </footer>
+</body>
+</html>
+"""
+
+fun_facts_template = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 19pt;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fun Facts About Teens (Ages 11-15)</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/resources">Resources</a>
+            <a href="/fun-facts">Fun Facts</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Did You Know?</h2>
+        <ul>
+            <li>Fact 1: Teens experience rapid physical and emotional changes during these years.</li>
+            <li>Fact 2: The brain undergoes significant development, affecting decision-making and risk-taking.</li>
+            <li>Fact 3: Peer relationships become increasingly important, and friendships can greatly influence behavior.</li>
+            <li>Fact 4: Adolescents often explore their identity and interests, leading to new hobbies and passions.</li>
+            <li>Fact 5: Developing a sense of independence is a key part of this stage, though it can lead to conflicts with parents.</li>
+            <li>Fact 6: Proper nutrition and regular exercise are crucial as teens grow and develop their adult bodies.</li>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 Teen Sexual Health</p>
+    </footer>
+</body>
+</html>
+"""
+
+@app.route('/')
+def home():
+    return render_template_string(home_template)
+
+@app.route('/about')
+def about():
+    return render_template_string(about_template)
+
+@app.route('/resources')
+def resources():
+    return render_template_string(resources_template)
+
+@app.route('/fun-facts')
+def fun_facts():
+    return render_template_string(fun_facts_template)
+
+if __name__ == '__main__':
+    app.run(debug=True)
